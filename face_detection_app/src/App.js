@@ -3,28 +3,14 @@ import Navigation from './components/navigation/Navigation';
 import Logo from './components/logo/Logo';
 import ImgLinkForm from './components/image_l_f/ImgLinkForm';
 import Rank from './components/rank/Rank';
-import Particles from 'react-particles-js';
+import Particles from "react-tsparticles";
 import './App.css';
-
-const particleOptions = {
-	particles: {
-		number: {
-			value: 70,
-			density: {
-				enable: true,
-				value_area: 800
-			}
-		}
-	}
-};
-
+      
 class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Particles className='particles'
-					params={particleOptions}
-				/>
+				<Particles className='particles' />
 				<Navigation />
 				<Logo />
 				<Rank />
