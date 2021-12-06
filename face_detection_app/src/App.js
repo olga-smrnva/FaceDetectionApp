@@ -5,13 +5,16 @@ import ImgLinkForm from './components/image_l_f/ImgLinkForm';
 import Rank from './components/rank/Rank';
 import FaceRecognition from './components/face_recognition/FaceRecognition';
 import Particles from "react-tsparticles";
+import ParticlesConfig from './components/particles/ParticlesConfig';
 import './App.css';
-      
+    
 class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Particles className='particles' />
+				<Particles className='particles'
+          			params={ParticlesConfig}
+        		/>
 				<Navigation />
 				<Logo />
 				<Rank />
