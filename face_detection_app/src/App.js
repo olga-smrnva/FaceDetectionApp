@@ -6,12 +6,12 @@ import Rank from './components/rank/Rank';
 import FaceRecognition from './components/face_recognition/FaceRecognition';
 import Particles from "react-tsparticles";
 import ParticlesConfig from './components/particles/ParticlesConfig';
-import Clarifai from 'clarifai';
+// import Clarifai from 'clarifai';
 import './App.css';
 
-const app = new Clarifai.App({
-	apikey: 'b5dc65dc60c0414daed11280d9e3f2bd'
-})
+// const app = new Clarifai.App({
+// 	apikey: 'b5dc65dc60c0414daed11280d9e3f2bd'
+// })
 
     
 class App extends Component {
