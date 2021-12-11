@@ -10,38 +10,37 @@ import Clarifai from 'clarifai';
 import './App.css';
 
 const app = new Clarifai.App({
-	apiKey: 'b5dc65dc60c0414daed11280d9e3f2bd'
-})
+	apiKey: "b5dc65dc60c0414daed11280d9e3f2bd",
+});
 
     
 class App extends Component {
 	constructor() {
-		super();
-		this.state = {
-			input: '',
-			imageUrl: '',
-		};
-	};
+	  super();
+	  this.state = {
+		input: "",
+		imageUrl: "",
+	  };
+	}
 
 	onInputChange = (event) => {
 		this.setState({ input: event.target.value });
 	};
-
-	onButtonSubmit = () => {
+	
+	  onButtonSubmit = () => {
 		this.setState({ imageUrl: this.state.input });
 		console.log(this.state.imageUrl);
 		app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-			function(response) {
+			function (response) {
 				console.log(
 					response.outputs[0].data.regions[0].region_info.bounding_box
 				);
 			},
 			function (err) {
-				console.log(err);
-			}
+			console.log(err);
+		  }
 		);
-};
-
+	};
 	render() {
 		return (
 			<div className="App">
