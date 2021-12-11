@@ -23,6 +23,12 @@ class App extends Component {
 	  };
 	}
 
+	onKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			this.onButtonSubmit();
+		};
+	};
+
 	onInputChange = (event) => {
 		this.setState({ input: event.target.value });
 	};
@@ -54,6 +60,7 @@ class App extends Component {
 				<ImgLinkForm 
 					onInputChange={this.onInputChange} 
 					onButtonSubmit={this.onButtonSubmit}
+					onKeyPress={this.onKeyPress}
 				/>
 				<FaceRecognition imageUrl={this.state.imageUrl}/>
 			</div>
