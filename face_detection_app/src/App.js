@@ -4,6 +4,7 @@ import Logo from './components/logo/Logo';
 import ImgLinkForm from './components/image_l_f/ImgLinkForm';
 import Rank from './components/rank/Rank';
 import FaceRecognition from './components/face_recognition/FaceRecognition';
+import SignIn from './components/SignIn/SignIn';
 import Particles from "react-tsparticles";
 import ParticlesConfig from './components/particles/ParticlesConfig';
 import Clarifai from 'clarifai';
@@ -38,7 +39,6 @@ class App extends Component {
 	  };
 
 	displayFaceBox = (box) => {
-		console.log(box);
 		this.setState({box: box});
 	};
 
@@ -78,6 +78,7 @@ class App extends Component {
 					onButtonSubmit={this.onButtonSubmit}
 				/>
 				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl}/>
+				<SignIn />
 			</div>
 		);
 	}
