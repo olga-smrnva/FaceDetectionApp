@@ -8,13 +8,13 @@ const ImgLinkForm = ({ onInputChange, onButtonSubmit, onKeyPress }) => {
 				{'Hey, let\'s start detecting faces' }
 			</p>
 			<div className='center'>
-				<div className='form center pa4 pl3 br3 shadow-5'>
-					<input className='input f5 w-70 center ba b--light-blue' type='text' 
+				<div className='form input center pa4 pl3 br3 shadow-5'>
+					<input className='f5 w-70 center ba b--light-blue' type='text' 
 					onChange={onInputChange}
 					onKeyPress={onKeyPress}
 					/>
 					<button 
-						className='w-25 br3 grow f4 link pt2 pb1 bn white bg-light-purple pointer'
+						className='w-25 br3 grow f4 link pv2 bn white bg-light-purple pointer'
 						onClick={onButtonSubmit}
 					>Detect</button>
 				</div>
