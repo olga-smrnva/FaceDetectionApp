@@ -20,11 +20,11 @@ class App extends Component {
 	constructor() {
 	  super();
 	  this.state = {
-		input: "",
-		imageUrl: "",
+		input: '',
+		imageUrl: '',
 		box: {},
 		route: 'signin',
-		isSignedIn: false,
+		isSignedIn: false
 	  };
 	}
 
@@ -69,10 +69,10 @@ class App extends Component {
 	onRouteChange = (route) => {
 		if (route === 'signout') {
 			this.setState({isSignedIn: false})
-		} else {
+		} else if (route === 'home'){
 			this.setState({isSignedIn: true})
 		};
-		this.setState({route: ' '});
+		this.setState({route: route});
 	};
 
 	render() {
@@ -82,7 +82,7 @@ class App extends Component {
 				<Particles className='particles'
           			params={ParticlesConfig}
         		/>
-				<Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+				<Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
 				{ route === 'home' 
 					? <div> 
 						<Logo />
