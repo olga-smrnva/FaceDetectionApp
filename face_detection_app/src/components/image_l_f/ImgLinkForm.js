@@ -9,7 +9,7 @@ const ImgLinkForm = ({ onInputChange, onButtonSubmit, onKeyPress }) => {
 			</p>
 			<div className='center'>
 				<div className='form center pa4 pl3 br3 shadow-5'>
-					<input className='f5 w-70 center ba b--light-blue' type='text' 
+					<input className='input f5 w-70 center ba b--light-blue' type='text' 
 					onChange={onInputChange}
 					onKeyPress={onKeyPress}
 					/>
