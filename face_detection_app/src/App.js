@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Navigation from './components/navigation/Navigation';
 import Logo from './components/logo/Logo';
-import ImgLinkForm from './components/image_l_f/ImgLinkForm';
+import ImgLinkForm from './components/image_link_form/ImgLinkForm';
 import Rank from './components/rank/Rank';
 import FaceRecognition from './components/face_recognition/FaceRecognition';
-import SignIn from './components/SignIn/SignIn';
-import Register from './components/Register/Register';
+import SignIn from './components/sign_in/SignIn';
+import Register from './components/register/Register';
 import Particles from "react-tsparticles";
 import ParticlesConfig from './components/particles/ParticlesConfig';
 import Clarifai from 'clarifai';
@@ -18,15 +18,17 @@ const app = new Clarifai.App({
     
 class App extends Component {
 	constructor() {
-	  super();
-	  this.state = {
-		input: '',
-		imageUrl: '',
-		box: {},
-		route: 'signin',
-		isSignedIn: false
-	  };
-	}
+		super();
+		this.state = {
+			input: '',
+			imageUrl: '',
+			box: {},
+			route: 'signin',
+			isSignedIn: false
+		};
+	};
+
+	
 
 	calculateFaceLocation = (data) => {
 		const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -34,12 +36,12 @@ class App extends Component {
 		const width = Number(image.width);
 		const height = Number(image.height);
 		return {
-		  leftCol: clarifaiFace.left_col * width,
-		  topRow: clarifaiFace.top_row * height,
-		  rightCol: width - (clarifaiFace.right_col * width),
-		  bottomRow: height - (clarifaiFace.bottom_row * height)
+			leftCol: clarifaiFace.left_col * width,
+			topRow: clarifaiFace.top_row * height,
+			rightCol: width - (clarifaiFace.right_col * width),
+			bottomRow: height - (clarifaiFace.bottom_row * height)
 		};
-	  };
+	};
 
 	displayFaceBox = (box) => {
 		this.setState({box: box});
