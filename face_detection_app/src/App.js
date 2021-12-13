@@ -43,7 +43,8 @@ class App extends Component {
 			entries: data.entries,
 			joined: data.joined
 		}})
-	};
+	  }
+	
 
 	calculateFaceLocation = (data) => {
 		const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -64,7 +65,7 @@ class App extends Component {
 
 	onKeyPress = (event) => {
 		if (event.key === 'Enter') {
-			this.onButtonSubmit();
+			this.onPictureSubmit();
 		};
 	};
 
@@ -72,14 +73,25 @@ class App extends Component {
 		this.setState({ input: event.target.value });
 	};
 	
-	onButtonSubmit = () => {
+	onPictureSubmit = () => {
 		this.setState({ imageUrl: this.state.input });
-		console.log(this.state.imageUrl);
 		app.models
 			.predict(
 				Clarifai.FACE_DETECT_MODEL, 
 				this.state.input)
-			.then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+			.then(response => {
+				console.log('hi', response)
+				if (response) {
+					fetch('http://localhost:3000/image', {
+						method: 'put',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({
+							id: this.state.user.id
+						})
+					})
+				}
+			this.displayFaceBox(this.calculateFaceLocation(response))
+			})
 			.catch(err => console.log(err))
 	};
 
@@ -103,17 +115,19 @@ class App extends Component {
 				{ route === 'home' 
 					? <div> 
 						<Logo />
-						<Rank />
+						<Rank 
+							name={this.state.user.name}
+               				entries={this.state.user.entries} />
 						<ImgLinkForm 
 							onInputChange={this.onInputChange} 
 							onKeyPress={this.onKeyPress}
-							onButtonSubmit={this.onButtonSubmit}
+							onPictureSubmit={this.onPictureSubmit}
 						/>
 						<FaceRecognition box={box} imageUrl={imageUrl}/>
 					</div>
 					: (
 						 route === 'signin'
-						? <SignIn onRouteChange={this.onRouteChange}/>
+						? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 						: <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					)
 				}
