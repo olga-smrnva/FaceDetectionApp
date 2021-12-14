@@ -1,7 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
-const cors =require('cors');
+const cors = require('cors');
+const knex = require('knex');
+
+const db = knex({
+	client: 'pg',
+	connection: {
+		host : '127.0.0.1',
+		user : 'olgasmirnova',
+		// port: 3001, 
+		password : 'ololo123',
+		database : 'face_detection_app'
+	}
+});
+
+db.select('*').from('users').then(data => {
+	// console.log(data);
+});
 
 const app = express();
 app.use(bodyParser.json());
@@ -49,14 +65,17 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
 	const { email, name } = req.body;
-	database.users.push({
-		id: '125',
-		name: name,
+	db('users')
+	.returning('*')
+	.insert({
 		email: email,
-		entries: 0,
+		name: name,
 		joined: new Date()
-	});
-	res.json(database.users[database.users.length-1]);
+	})
+	.then(user => {
+		res.json(user[0]);
+	})
+	.catch(err => res.status(400).json('User with this email is already exist'));
 });
 
 app.get('/profile/:id', (req, res) => {
