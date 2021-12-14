@@ -14,6 +14,7 @@ const database = {
 			name: 'John',
 			email: 'john@gmail.com',
 			password: 'cookies',
+			entries: 0,
 			joined: new Date()
 		},
 		{
@@ -21,6 +22,7 @@ const database = {
 			name: 'Sally',
 			email: 'sally@gmail.com',
 			password: 'bananas',
+			entries: 0,
 			joined: new Date()
 		},
 	],
@@ -51,6 +53,7 @@ app.post('/register', (req, res) => {
 		id: '125',
 		name: name,
 		email: email,
+		entries: 0,
 		joined: new Date()
 	});
 	res.json(database.users[database.users.length-1]);
@@ -78,9 +81,9 @@ app.put('/image', (req, res) => {
 
 	database.users.forEach(user => {
 		if(user.id === id) {
-			returnfound = true;
-			// user.entries++;
-			// return res.json(user.entries);
+			found = true;
+			user.entries++;
+			return res.json(user.entries);
 		};
 	});
 

@@ -29,6 +29,7 @@ class App extends Component {
 				id: '',
 				name: '',
 				email: '',
+				entries: 0,
 				joined: ''
 			}
 		};
@@ -39,6 +40,7 @@ class App extends Component {
 			id: data.id,
 			name: data.name,
 			email: data.email,
+			entries: data.entries,
 			joined: data.joined
 		}})
 	  }
@@ -87,6 +89,10 @@ class App extends Component {
 							id: this.state.user.id
 						})
 					})
+						.then(response => response.json())
+						.then(count => {
+							this.setState(Object.assign(this.state.user, { entries: count}))
+           				})
 				}
 			this.displayFaceBox(this.calculateFaceLocation(response))
 			})
@@ -113,7 +119,9 @@ class App extends Component {
 				{route === 'home' 
 					? <div> 
 						<Logo />
-						<Greeting name={this.state.user.name} />
+						<Greeting 							
+							name={this.state.user.name}
+               				entries={this.state.user.entries} />
 						<ImgLinkForm 
 							onInputChange={this.onInputChange} 
 							onKeyPress={this.onKeyPress}

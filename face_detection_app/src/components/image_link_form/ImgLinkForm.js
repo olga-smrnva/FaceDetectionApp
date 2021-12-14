@@ -5,7 +5,7 @@ const ImgLinkForm = ({ onInputChange, onPictureSubmit, onKeyPress }) => {
 	return (
 		<div>
 			<p className='f3'>
-				{'Hey, let\'s start detecting faces' }
+				{'Let\'s start detecting faces!' }
 			</p>
 			<div className='center'>
 				<div className='form input center pa4 pl3 br3 shadow-5'>
