@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './components/navigation/Navigation';
 import Logo from './components/logo/Logo';
 import ImgLinkForm from './components/image_link_form/ImgLinkForm';
-import Rank from './components/rank/Rank';
+import Greeting from './components/greeting/Greeting';
 import FaceRecognition from './components/face_recognition/FaceRecognition';
 import SignIn from './components/sign_in/SignIn';
 import Register from './components/register/Register';
@@ -29,7 +29,6 @@ class App extends Component {
 				id: '',
 				name: '',
 				email: '',
-				entries: 0,
 				joined: ''
 			}
 		};
@@ -40,7 +39,6 @@ class App extends Component {
 			id: data.id,
 			name: data.name,
 			email: data.email,
-			entries: data.entries,
 			joined: data.joined
 		}})
 	  }
@@ -115,9 +113,7 @@ class App extends Component {
 				{ route === 'home' 
 					? <div> 
 						<Logo />
-						<Rank 
-							name={this.state.user.name}
-               				entries={this.state.user.entries} />
+						<Greeting name={this.state.user.name} />
 						<ImgLinkForm 
 							onInputChange={this.onInputChange} 
 							onKeyPress={this.onKeyPress}
