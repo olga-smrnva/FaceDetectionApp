@@ -1,4 +1,5 @@
 import React from 'react';
+import '../image_link_form/ImgLinkForm.css';
 
 class Register extends React.Component {
 	constructor(props) {

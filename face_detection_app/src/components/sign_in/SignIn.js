@@ -1,4 +1,5 @@
 import React from 'react';
+import '../image_link_form/ImgLinkForm.css';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -47,7 +48,7 @@ class SignIn extends React.Component {
 						<label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 						<input
 						onChange={this.onEmailChange}
-						className="pa2 input-reset ba b--black bg-transparent hover-bg-black hover-white w-100"
+						className="input pa2 input-reset ba b--black bg-transparent hover-bg-black hover-white w-100"
 						type="email"
 						name="email-address"
 						id="email-address"
@@ -57,7 +58,7 @@ class SignIn extends React.Component {
 						<label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
 						<input
 						onChange={this.onPasswordChange}
-						className="b pa2 input-reset ba b--black bg-transparent hover-bg-black hover-white w-100"
+						className="input b pa2 input-reset ba b--black bg-transparent hover-bg-black hover-white w-100"
 						type="password"
 						name="password"
 						id="password"
